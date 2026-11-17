@@ -1,0 +1,10 @@
+<Project>
+  <PropertyGroup>
+    <CertBoxPlatform Condition="'$(CertBoxPlatform)' == '' and ($([System.String]::Copy('$(RuntimeIdentifier)').StartsWith('linux-')) or $([System.String]::Copy('$(RuntimeIdentifiers)').StartsWith('linux-')))">linux</CertBoxPlatform>
+    <CertBoxPlatform Condition="'$(CertBoxPlatform)' == '' and '$(OS)' != 'Windows_NT' and '$(RuntimeIdentifier)' == ''">linux</CertBoxPlatform>
+    <CertBoxPlatform Condition="'$(CertBoxPlatform)' == ''">windows</CertBoxPlatform>
+    <BaseIntermediateOutputPath>obj/$(CertBoxPlatform)/</BaseIntermediateOutputPath>
+    <BaseOutputPath>bin/$(CertBoxPlatform)/</BaseOutputPath>
+    <DefaultItemExcludes>$(DefaultItemExcludes);obj/**;bin/**</DefaultItemExcludes>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-11-17",
+  "components": [
+    {
+      "name": "Avalonia",
+      "version": "11.3.23",
+      "packages": [
+        "Avalonia",
+        "Avalonia.Win32",
+        "Avalonia.Skia",
+        "Avalonia.Themes.Fluent",
+        "Avalonia.Fonts.Inter",
+        "Avalonia.Remote.Protocol",
+        "Avalonia.X11",
+        "Avalonia.FreeDesktop"
+      ],
+      "license": "MIT; bundled Inter font: OFL-1.1",
+      "repository": "https://github.com/AvaloniaUI/Avalonia",
+      "commit": "03bd7e694d8ae1247663b8a9a36f536f785c2bd3"
+    },
+    {
+      "name": "SkiaSharp",
+      "version": "2.88.9",
+      "packages": [
+        "SkiaSharp",
+        "SkiaSharp.NativeAssets.Win32",
+        "SkiaSharp.NativeAssets.Linux"
+      ],
+      "license": "MIT and upstream native component notices",
+      "repository": "https://github.com/mono/SkiaSharp",
+      "commit": "9699cdf046a989423a5e5eca68e7fd813486d81c",
+      "skiaSubmodule": "4bed689c9c9eb77a120c6a9d54af6a572c85d1c2"
+    },
+    {
+      "name": "HarfBuzzSharp",
+      "version": "8.3.1.1",
+      "packages": [
+        "HarfBuzzSharp",
+        "HarfBuzzSharp.NativeAssets.Win32",
+        "HarfBuzzSharp.NativeAssets.Linux"
+      ],
+      "license": "MIT and upstream native component notices",
+      "repository": "https://github.com/mono/SkiaSharp",
+      "commit": "64f24b1cddb68d30ec0ac6b661964178fc21d5ec",
+      "skiaSubmodule": "30abf4a0dcd3006f3a555e46906151e486f87b6e"
+    },
+    {
+      "name": "ANGLE",
+      "version": "2.1.25547.20250602",
+      "packages": [
+        "Avalonia.Angle.Windows.Natives"
+      ],
+      "license": "BSD-3-Clause and upstream component notices",
+      "repository": "https://github.com/AvaloniaUI/angle",
+      "commit": "cb8b4e1307a9d8f5ff56b8c5973bea4158ffead8",
+      "targets": [
+        "win-x64"
+      ]
+    },
+    {
+      "name": "MicroCom.Runtime",
+      "version": "0.11.0",
+      "packages": [
+        "MicroCom.Runtime"
+      ],
+      "license": "MIT",
+      "repository": "https://github.com/kekekeks/MicroCom",
+      "commit": "7e773759cfc1012a5d080d4129c4718a662884b0",
+      "provenance": "Version 0.11.0 and strong-name change verified in upstream Directory.Build.props; NuGet package does not stamp a repository commit."
+    },
+    {
+      "name": ".NET runtime",
+      "version": "10.0.15",
+      "packages": [
+        "Microsoft.NETCore.App.Runtime.win-x64",
+        "Microsoft.NETCore.App.Runtime.linux-x64"
+      ],
+      "license": "MIT and upstream component notices",
+      "repository": "https://github.com/dotnet/dotnet",
+      "commit": "8e0f8ed2312954727f8919d7d1c2f78b483b4ee7"
+    },
+    {
+      "name": "Tmds.DBus.Protocol",
+      "version": "0.21.3",
+      "packages": [
+        "Tmds.DBus.Protocol"
+      ],
+      "targets": [
+        "linux-x64"
+      ],
+      "license": "MIT",
+      "repository": "https://github.com/tmds/Tmds.DBus",
+      "commit": "8cb04f66c330b64244e996ff68f685f27f7381a0"
+    }
+  ],
+  "buildOnly": [
+    {
+      "name": "Avalonia.BuildServices",
+      "version": "11.3.2",
+      "license": "MIT",
+      "repository": "https://github.com/AvaloniaUI/Avalonia.BuildServices",
+      "commit": "777f975b0a0cecf0311273711d56697212c558c0"
+    },
+    {
+      "name": "Microsoft.NET.ILLink.Tasks",
+      "version": "10.0.15",
+      "license": "MIT",
+      "repository": "https://github.com/dotnet/dotnet",
+      "commit": "8e0f8ed2312954727f8919d7d1c2f78b483b4ee7"
+    }
+  ],
+  "targets": [
+    "win-x64",
+    "linux-x64"
+  ]
+}

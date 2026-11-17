@@ -1,0 +1,37 @@
+name: Problema / Bug / Error
+description: Relate um problema usando dados fictícios / Use synthetic data only
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Desenvolvido com IA / Developed with AI / Desarrollado con IA.
+        Não envie chaves privadas, senhas ou arquivos de clientes.
+        Do not share private keys, passwords or customer files.
+        No compartas claves privadas, contraseñas ni archivos de clientes.
+  - type: input
+    id: version
+    attributes:
+      label: Versão / Version
+      description: Configurações → Sobre / Settings → About
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Sistema e escala de tela / OS and display scaling
+      description: Windows ou distribuição Linux, X11/Wayland / Windows or Linux distro and desktop session
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Como reproduzir / Steps to reproduce
+      description: Use certificados fictícios / Use synthetic certificates
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Resultado esperado e observado / Expected and actual behavior
+    validations:
+      required: true

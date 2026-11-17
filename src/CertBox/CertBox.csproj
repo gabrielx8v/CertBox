@@ -1,0 +1,58 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <DefineConstants Condition="'$(CertBoxPlatform)' == 'linux'">$(DefineConstants);LINUX_DESKTOP</DefineConstants>
+    <OutputType>WinExe</OutputType>
+    <OutputType Condition="'$(CertBoxPlatform)' == 'linux'">Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AssemblyName>certbox</AssemblyName>
+    <Product>CertBox</Product>
+    <Title>CertBox</Title>
+    <AssemblyTitle>CertBox</AssemblyTitle>
+    <Description>Inspeção e exportação de certificados</Description>
+    <Version>2.3.0</Version>
+    <Authors>Gabriel and CertBox contributors</Authors>
+    <Copyright>Copyright (C) 2026 Gabriel and CertBox contributors</Copyright>
+    <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
+    <ApplicationIcon Condition="'$(CertBoxPlatform)' == 'windows'">Assets/certbox.ico</ApplicationIcon>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <PredefinedCulturesOnly>false</PredefinedCulturesOnly>
+    <ApplicationManifest Condition="'$(CertBoxPlatform)' == 'windows'">app.manifest</ApplicationManifest>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <NuGetLockFilePath>$(MSBuildProjectDirectory)/packages.$(CertBoxPlatform).lock.json</NuGetLockFilePath>
+    <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+    <PublishTrimmed>true</PublishTrimmed>
+    <TrimMode>full</TrimMode>
+    <TrimmerSingleWarn>false</TrimmerSingleWarn>
+    <BuiltInComInteropSupport Condition="'$(CertBoxPlatform)' == 'windows'">true</BuiltInComInteropSupport>
+    <BuiltInComInteropSupport Condition="'$(CertBoxPlatform)' == 'linux'">false</BuiltInComInteropSupport>
+    <UseSizeOptimizedLinq>true</UseSizeOptimizedLinq>
+    <DebuggerSupport>false</DebuggerSupport>
+  </PropertyGroup>
+  <ItemGroup>
+    <AvaloniaResource Include="Assets/certbox.ico" Condition="'$(CertBoxPlatform)' == 'windows'" />
+    <AvaloniaResource Include="Assets/certbox-256.png" Condition="'$(CertBoxPlatform)' == 'linux'" />
+    <EmbeddedResource Include="../../project.json" LogicalName="CertBox.Documents.project.json" />
+    <EmbeddedResource Include="../../LICENSE" LogicalName="CertBox.Documents.LICENSE.txt" />
+    <EmbeddedResource Include="../../docs/PRIVACY.*.md;../../docs/HELP.*.md" LogicalName="CertBox.Documents.%(Filename)%(Extension)" WithCulture="false" />
+    <EmbeddedResource Include="../../THIRD_PARTY_NOTICES.md;../../licenses/avalonia-MIT.txt;../../licenses/microcom-MIT.txt;../../licenses/inter-OFL.txt;../../licenses/skiasharp__*;../../licenses/harfbuzzsharp__*"
+                      LogicalName="CertBox.Licenses.%(Filename)%(Extension)" />
+    <PackageReference Include="Avalonia.Skia" Version="11.3.23" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.23" />
+    <PackageReference Include="Avalonia.Fonts.Inter" Version="11.3.23" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(CertBoxPlatform)' == 'windows'">
+    <PackageReference Include="Avalonia.Win32" Version="11.3.23" />
+    <TrimmerRootAssembly Include="Avalonia.Win32" />
+    <EmbeddedResource Include="../../licenses/avalonia.angle.windows.natives__2.1.25547.20250602__LICENSE;../../licenses/*win-x64*;../../licenses/*win32*" LogicalName="CertBox.Licenses.%(Filename)%(Extension)" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(CertBoxPlatform)' == 'linux'">
+    <PackageReference Include="Avalonia.X11" Version="11.3.23" />
+    <TrimmerRootAssembly Include="Avalonia.X11" />
+    <TrimmerRootAssembly Include="Avalonia.FreeDesktop" />
+    <TrimmerRootAssembly Include="Tmds.DBus.Protocol" />
+    <EmbeddedResource Include="../../licenses/*linux-x64*;../../licenses/*nativeassets.linux*;../../licenses/tmds-dbus-MIT.txt" LogicalName="CertBox.Licenses.%(Filename)%(Extension)" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,11 @@
+work/
+**/bin/
+**/obj/
+output/
+release/
+settings.json
+*.user
+old versions/
+LICENCIAMENTO.md
+SIZE_ANALYSIS.md
+VALIDACAO.txt
