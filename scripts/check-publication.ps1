@@ -22,7 +22,8 @@ $version = [string]$project.Project.PropertyGroup.Version
 $executable = Get-Item -LiteralPath (Join-Path $assets 'certbox-windows-x64.exe')
 if (($executable.VersionInfo.ProductVersion -split '\+', 2)[0] -ne $version -or $manifest.assembly.assemblyIdentity.version -ne ($version + '.0')) { throw 'Source, manifest and executable versions differ.' }
 $sum = Get-Content -LiteralPath (Join-Path $assets 'SHA256SUMS.txt') -Raw -Encoding UTF8
-$artifacts = @(Get-Content -LiteralPath (Join-Path $assets 'ARTIFACTS.json') -Raw -Encoding UTF8 | ConvertFrom-Json)
+# Assign directly to avoid an extra array layer in Windows PowerShell 5.1.
+$artifacts = Get-Content -LiteralPath (Join-Path $assets 'ARTIFACTS.json') -Raw -Encoding UTF8 | ConvertFrom-Json
 if ($artifacts.Count -ne 2) { throw 'Expected Windows and Linux artifacts.' }
 foreach ($artifact in $artifacts) {
     $file = Get-Item -LiteralPath (Join-Path $assets $artifact.name)
