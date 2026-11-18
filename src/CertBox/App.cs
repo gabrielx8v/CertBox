@@ -14,9 +14,9 @@ public sealed class App : Application
     {
         var builder = AppBuilder.Configure<App>();
 #if LINUX_DESKTOP
-        return builder.UseX11().UseSkia().WithInterFont();
+        return builder.UseX11().UseSkia().UseHarfBuzz().WithInterFont();
 #else
-        return builder.UseWin32().UseSkia().WithInterFont();
+        return builder.UseWin32().UseSkia().UseHarfBuzz().WithInterFont();
 #endif
     }
 

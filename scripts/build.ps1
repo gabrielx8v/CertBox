@@ -4,6 +4,7 @@ $ErrorActionPreference = 'Stop'
 if ($ForRelease -and $Target -ne 'Both') { throw 'Public release preparation requires both Windows and Linux builds.' }
 Set-Location (Split-Path $PSScriptRoot -Parent)
 $env:DOTNET_CLI_TELEMETRY_OPTOUT = '1'
+$env:DOTNET_GENERATE_ASPNET_CERTIFICATE = 'false'
 $env:AVALONIA_TELEMETRY_OPTOUT = '1'
 $env:DOTNET_CLI_HOME = Join-Path $PWD 'work/dotnet-home'
 $env:NUGET_HTTP_CACHE_PATH = Join-Path $PWD 'work/nuget-http'

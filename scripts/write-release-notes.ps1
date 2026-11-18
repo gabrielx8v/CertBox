@@ -11,7 +11,7 @@ foreach ($name in @('certbox-windows-x64.exe', 'certbox-linux-x64.tar.gz')) {
     $path = Join-Path $OutputDirectory $name
     if (-not (Test-Path -LiteralPath $path)) { continue }
     $file = Get-Item -LiteralPath $path
-    if ($name.EndsWith('.exe') -and $file.VersionInfo.ProductVersion -ne $version) { throw 'Windows executable version differs from source; rebuild both platforms.' }
+    if ($name.EndsWith('.exe') -and ($file.VersionInfo.ProductVersion -split '\+', 2)[0] -ne $version) { throw 'Windows executable version differs from source; rebuild both platforms.' }
     $artifacts += [pscustomobject]@{ name = $name; version = $version; platform = $(if ($name.EndsWith('.exe')) { 'win-x64' } else { 'linux-x64' }); bytes = $file.Length; sha256 = (Get-FileHash -LiteralPath $path -Algorithm SHA256).Hash.ToLowerInvariant() }
 }
 if (-not $artifacts.Count) { throw 'No current executable artifacts found.' }

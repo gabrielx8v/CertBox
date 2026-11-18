@@ -17,6 +17,9 @@ separadamente pelo GitHub. Mantenha Dependabot alerts e security updates ativos.
 Os pacotes Avalonia são agrupados para revisão conjunta, tanto nas atualizações
 de versão quanto nas de segurança. Isso ajuda a manter a família compatível;
 não substitui a conferência das versões propostas e dos dois builds.
+A propriedade AvaloniaVersion no projeto é compartilhada por todos esses pacotes,
+incluindo Win32 e X11. Atualizar essa propriedade mantém também o backend que
+estiver inativo no ambiente de avaliação do Dependabot na mesma versão.
 O Dependabot propõe alterações por pull request. A configuração não publica
 executáveis nem concede aprovação automática às mudanças.
 
@@ -33,7 +36,7 @@ executáveis nem concede aprovação automática às mudanças.
    dotnet restore src/CertBox/CertBox.csproj -r linux-x64 -p:CertBoxPlatform=linux --force-evaluate
    ```
 
-4. Confira se Avalonia.Win32, Avalonia.X11 e os pacotes Avalonia compartilhados
+4. Confira se AvaloniaVersion, Avalonia.Win32, Avalonia.X11 e os pacotes compartilhados
    mantêm versões compatíveis. Confira os diffs de packages.windows.lock.json
    e packages.linux.lock.json; inclua as correções no mesmo PR.
 5. Siga [BUILDING.md](../BUILDING.md) para compilar as duas plataformas e rodar
@@ -48,10 +51,13 @@ executáveis nem concede aprovação automática às mudanças.
 
 ## Escopo
 
-CodeQL com configuração Default é gerenciado pelo GitHub e não cria um workflow
-versionado neste projeto. Por isso não existe uma entrada github-actions sem
-manifesto correspondente. Quando houver arquivos em .github/workflows, acrescente
-o monitoramento github-actions com directory: "/".
+CodeQL com configuração Default é gerenciado pelo GitHub. O workflow Verify em
+.github/workflows/verify.yml executa testes e publica a GUI reduzida em Windows
+e Linux para verificar compatibilidade. Ele usa ações oficiais fixadas por SHA,
+token somente de leitura e não publica releases nem grava mudanças no repositório.
+A entrada github-actions monitora essas ações semanalmente, com até dois PRs de
+versão simultâneos. O resultado do workflow no GitHub precisa ser conferido após
+o envio; configurar o arquivo localmente não equivale a uma execução no runner.
 
 Atualização de versões e submissão ao grafo de dependências são recursos
 distintos. O arquivo define o ecossistema nuget mesmo com o projeto em subpasta,

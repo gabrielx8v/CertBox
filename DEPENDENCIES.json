@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "checkedOn": "2026-11-17",
+  "checkedOn": "2026-11-18",
   "components": [
     {
       "name": "Avalonia",
-      "version": "11.3.23",
+      "version": "12.1.6",
       "packages": [
         "Avalonia",
         "Avalonia.Win32",
@@ -13,15 +13,17 @@
         "Avalonia.Fonts.Inter",
         "Avalonia.Remote.Protocol",
         "Avalonia.X11",
-        "Avalonia.FreeDesktop"
+        "Avalonia.FreeDesktop",
+        "Avalonia.HarfBuzz",
+        "Avalonia.FreeDesktop.AtSpi"
       ],
       "license": "MIT; bundled Inter font: OFL-1.1",
       "repository": "https://github.com/AvaloniaUI/Avalonia",
-      "commit": "03bd7e694d8ae1247663b8a9a36f536f785c2bd3"
+      "commit": "cf8e564674700348947e93ab19105f27afe859a9"
     },
     {
       "name": "SkiaSharp",
-      "version": "2.88.9",
+      "version": "3.119.4",
       "packages": [
         "SkiaSharp",
         "SkiaSharp.NativeAssets.Win32",
@@ -29,12 +31,12 @@
       ],
       "license": "MIT and upstream native component notices",
       "repository": "https://github.com/mono/SkiaSharp",
-      "commit": "9699cdf046a989423a5e5eca68e7fd813486d81c",
-      "skiaSubmodule": "4bed689c9c9eb77a120c6a9d54af6a572c85d1c2"
+      "commit": "f568ac94dd768ef9a2f593537cfde2dd0d348ef5",
+      "skiaSubmodule": "7dbfc07dd33181f84e0958afb7ee805c6c769f0b"
     },
     {
       "name": "HarfBuzzSharp",
-      "version": "8.3.1.1",
+      "version": "8.3.1.3",
       "packages": [
         "HarfBuzzSharp",
         "HarfBuzzSharp.NativeAssets.Win32",
@@ -42,32 +44,32 @@
       ],
       "license": "MIT and upstream native component notices",
       "repository": "https://github.com/mono/SkiaSharp",
-      "commit": "64f24b1cddb68d30ec0ac6b661964178fc21d5ec",
-      "skiaSubmodule": "30abf4a0dcd3006f3a555e46906151e486f87b6e"
+      "commit": "2888c737ad016d584c74525e2d35db5097ea8576",
+      "skiaSubmodule": "927041a58f130e0dd0562ba86cb4170989ad39e9"
     },
     {
       "name": "ANGLE",
-      "version": "2.1.25547.20250602",
+      "version": "2.1.27548.20260419",
       "packages": [
         "Avalonia.Angle.Windows.Natives"
       ],
       "license": "BSD-3-Clause and upstream component notices",
       "repository": "https://github.com/AvaloniaUI/angle",
-      "commit": "cb8b4e1307a9d8f5ff56b8c5973bea4158ffead8",
+      "commit": "1c89805903c1482166356d3b950d474973180e61",
       "targets": [
         "win-x64"
       ]
     },
     {
       "name": "MicroCom.Runtime",
-      "version": "0.11.0",
+      "version": "0.11.6",
       "packages": [
         "MicroCom.Runtime"
       ],
       "license": "MIT",
       "repository": "https://github.com/kekekeks/MicroCom",
-      "commit": "7e773759cfc1012a5d080d4129c4718a662884b0",
-      "provenance": "Version 0.11.0 and strong-name change verified in upstream Directory.Build.props; NuGet package does not stamp a repository commit."
+      "commit": "76785efcafd91b5902fd19dd11145f6dd655b7b4",
+      "provenance": "Repository commit stamped in the NuGet package nuspec."
     },
     {
       "name": ".NET runtime",
@@ -82,7 +84,7 @@
     },
     {
       "name": "Tmds.DBus.Protocol",
-      "version": "0.21.3",
+      "version": "0.94.1",
       "packages": [
         "Tmds.DBus.Protocol"
       ],
@@ -91,7 +93,7 @@
       ],
       "license": "MIT",
       "repository": "https://github.com/tmds/Tmds.DBus",
-      "commit": "8cb04f66c330b64244e996ff68f685f27f7381a0"
+      "commit": "b4a7fed0b878f74cb54f7cca84d2889af4e596ba"
     }
   ],
   "buildOnly": [
@@ -108,6 +110,14 @@
       "license": "MIT",
       "repository": "https://github.com/dotnet/dotnet",
       "commit": "8e0f8ed2312954727f8919d7d1c2f78b483b4ee7"
+    },
+    {
+      "name": ".NET SDK",
+      "version": "11.0.100",
+      "license": "MIT and upstream component notices",
+      "repository": "https://github.com/dotnet/dotnet",
+      "commit": "297acf930fb0f5c07fd4e51d78e521b4ad2e5d1f",
+      "provenance": "SDK commit from sdk/11.0.100/.version in the official archive, verified against release-metadata SHA-512."
     }
   ],
   "targets": [

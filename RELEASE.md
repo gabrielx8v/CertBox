@@ -12,7 +12,7 @@ Antes da primeira publicação:
 
 1. Confira a URL oficial em project.json e compile com scripts/build.ps1 -ForRelease.
 2. Publique work/github-current/repository como raiz do repositório, sem histórico anterior.
-3. Crie a tag v2.3.0 no código usado no build e uma release correspondente.
+3. Crie a tag v2.3.1 no código usado no build e uma release correspondente.
 4. Anexe o EXE, o TAR.GZ Linux e SHA256SUMS.txt de work/github-current/release-assets.
 5. Use o texto gerado em release/RELEASE_NOTES.md e mantenha o código da tag disponível.
 6. Confira manualmente a interface e os diálogos em Windows x64, inclusive

@@ -4,7 +4,8 @@ Desenvolvido com IA. O processo abaixo mantém testes e publicação reproduzív
 a partir do código e das versões de pacotes fixadas, sem prometer identidade
 binária entre SDKs, ambientes e versões diferentes.
 
-Para o script principal: Windows x64, PowerShell e .NET SDK 10.0.404, fixado em global.json.
+Para o script principal: Windows x64, PowerShell e .NET SDK 11.0.100, fixado em global.json.
+O aplicativo continua direcionado a net10.0 e inclui o runtime .NET 10 na entrega.
 A primeira restauração precisa de acesso ao NuGet. Git é necessário apenas
 para obter o projeto ou as fontes das dependências. O usuário final recebe um
 pacote com runtime incluído e não precisa instalar .NET ou ferramentas de build.
@@ -31,6 +32,12 @@ outro destino explicitamente. -Target Windows ou -Target Linux seleciona uma
 compilação; -ForRelease exige Both. work, bin e obj são intermediários ignorados
 pelo Git. Objetos e lockfiles são separados por plataforma para evitar que a
 restauração de uma altere as dependências da outra.
+
+O workflow Verify em .github/workflows/verify.yml faz testes e publicação técnica
+reduzida nos runners Windows e Ubuntu 24.04, usando os dois lockfiles. Não gera
+releases nem envia binários automaticamente. Após o primeiro envio, confira a
+execução no GitHub antes de exigir esses checks no Ruleset. CodeQL permanece
+com sua configuração Default separada.
 
 A versão Linux não foi testada manualmente. Ela usa X11 ou XWayland; consulte
 docs/LINUX.md para requisitos e limitações. Uma compilação direta com SDK Linux:
@@ -85,7 +92,7 @@ release-assets separa as duas entregas e seus hashes para a release. Históricos
 e anotações internas são excluídos desse preparo; não é criado histórico Git
 anterior nem um ZIP de código.
 
-A tag v2.3.0 deve apontar para o código usado na compilação 2.3.0. Cada release
+A tag v2.3.1 deve apontar para o código usado na compilação 2.3.1. Cada release
 deve permitir obter seu código correspondente e suas instruções de build.
 Não substitua silenciosamente o EXE de uma release já publicada: crie uma nova
 versão e um novo hash. Veja RELEASE.md e DEPENDENCIES.md.

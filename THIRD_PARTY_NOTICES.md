@@ -7,15 +7,17 @@ not replace them.
 - .NET runtime 10 (Microsoft and contributors): MIT and additional notices.
   https://github.com/dotnet/runtime/blob/main/LICENSE.TXT
   https://github.com/dotnet/runtime/blob/main/THIRD-PARTY-NOTICES.TXT
-- Avalonia 11.3.23, Avalonia.Win32, Avalonia.Skia, Avalonia.Themes.Fluent and related components:
-  MIT. https://github.com/AvaloniaUI/Avalonia/blob/11.3.23/licence.md
+- Avalonia 12.1.6, Avalonia.Win32, Avalonia.Skia, Avalonia.HarfBuzz,
+  Avalonia.Themes.Fluent and related components: MIT.
+  https://github.com/AvaloniaUI/Avalonia/blob/cf8e564674700348947e93ab19105f27afe859a9/licence.md
 - Inter font: SIL Open Font License 1.1. https://github.com/rsms/inter/blob/master/LICENSE.txt
 - SkiaSharp and HarfBuzzSharp (Microsoft/Xamarin and contributors): MIT, with
   Skia/HarfBuzz upstream notices. https://github.com/mono/SkiaSharp
   https://github.com/harfbuzz/harfbuzz
 - MicroCom.Runtime: MIT. https://github.com/kekekeks/MicroCom
-- Linux: Avalonia.X11 and Avalonia.FreeDesktop 11.3.23 (MIT), plus
-  Tmds.DBus.Protocol 0.21.3 (Tom Deseyn, MIT). https://github.com/tmds/Tmds.DBus
+- Linux: Avalonia.X11, Avalonia.FreeDesktop and Avalonia.FreeDesktop.AtSpi
+  12.1.6 (MIT), plus Tmds.DBus.Protocol 0.94.1 (Tom Deseyn and original
+  contributors, MIT). https://github.com/tmds/Tmds.DBus
 - Windows only: ANGLE and its original notices. Linux builds do not include ANGLE.
 
 The native graphics components include work from the FreeType Project
