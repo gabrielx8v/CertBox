@@ -39,9 +39,9 @@
     <EmbeddedResource Include="../../docs/PRIVACY.*.md;../../docs/HELP.*.md" LogicalName="CertBox.Documents.%(Filename)%(Extension)" WithCulture="false" />
     <EmbeddedResource Include="../../THIRD_PARTY_NOTICES.md;../../licenses/avalonia-MIT.txt;../../licenses/microcom-MIT.txt;../../licenses/inter-OFL.txt;../../licenses/skiasharp__*;../../licenses/harfbuzzsharp__*"
                       LogicalName="CertBox.Licenses.%(Filename)%(Extension)" />
-    <PackageReference Include="Avalonia.Skia" Version="11.3.23" />
-    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.23" />
-    <PackageReference Include="Avalonia.Fonts.Inter" Version="11.3.23" />
+    <PackageReference Include="Avalonia.Skia" Version="12.1.6" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="12.1.6" />
+    <PackageReference Include="Avalonia.Fonts.Inter" Version="12.1.6" />
   </ItemGroup>
   <ItemGroup Condition="'$(CertBoxPlatform)' == 'windows'">
     <PackageReference Include="Avalonia.Win32" Version="11.3.23" />
@@ -49,7 +49,7 @@
     <EmbeddedResource Include="../../licenses/avalonia.angle.windows.natives__2.1.25547.20250602__LICENSE;../../licenses/*win-x64*;../../licenses/*win32*" LogicalName="CertBox.Licenses.%(Filename)%(Extension)" />
   </ItemGroup>
   <ItemGroup Condition="'$(CertBoxPlatform)' == 'linux'">
-    <PackageReference Include="Avalonia.X11" Version="11.3.23" />
+    <PackageReference Include="Avalonia.X11" Version="12.1.6" />
     <TrimmerRootAssembly Include="Avalonia.X11" />
     <TrimmerRootAssembly Include="Avalonia.FreeDesktop" />
     <TrimmerRootAssembly Include="Tmds.DBus.Protocol" />
