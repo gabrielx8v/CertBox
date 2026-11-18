@@ -16,3 +16,7 @@ Consulte BUILDING.md para compilar e testar. Alterações de interface devem
 preservar navegação por teclado, rolagem, seleção independente de exportação e
 visualização, e as traduções em português, inglês e espanhol. Novos textos devem
 ter as três traduções. Explique como a alteração foi verificada.
+
+Para propostas do Dependabot ou mudanças de pacotes/SDK, siga também
+[a revisão de dependências](docs/DEPENDENCY_UPDATES.md), incluindo os lockfiles
+de Windows e Linux e a atualização dos avisos de terceiros.
