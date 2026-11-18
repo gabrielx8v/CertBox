@@ -1,0 +1,33 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+# Developed with AI; third-party components retain their original licenses.
+version: 2
+
+updates:
+  # Shared and platform-specific PackageReference entries live in this project.
+  - package-ecosystem: "nuget"
+    directory: "/src/CertBox"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "America/Sao_Paulo"
+    open-pull-requests-limit: 3
+    groups:
+      avalonia:
+        applies-to: "version-updates"
+        patterns:
+          - "Avalonia.*"
+      avalonia-security:
+        applies-to: "security-updates"
+        patterns:
+          - "Avalonia.*"
+
+  # global.json pins the SDK used to compile both GUI distributions.
+  - package-ecosystem: "dotnet-sdk"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "America/Sao_Paulo"
+    open-pull-requests-limit: 1
