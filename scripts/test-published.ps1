@@ -3,6 +3,7 @@ param([string]$PublishedDirectory = 'work/publish/verification-windows', [string
 $ErrorActionPreference = 'Stop'
 Set-Location (Split-Path $PSScriptRoot -Parent)
 $env:DOTNET_CLI_TELEMETRY_OPTOUT = '1'
+$env:DOTNET_GENERATE_ASPNET_CERTIFICATE = 'false'
 $env:DOTNET_CLI_HOME = Join-Path $PWD 'work/dotnet-home'
 $env:NUGET_PACKAGES = Join-Path $PWD 'work/packages'
 if ($Dotnet -eq 'dotnet' -and (Test-Path -LiteralPath 'work/dotnet/dotnet.exe')) {

@@ -30,7 +30,7 @@ libxext6, libice6, libsm6, libxrandr2, libxinerama1, libxi6, libxcursor1,
 libxrender1, libxfixes3 e libfontconfig1.
 Seletores de arquivos podem usar o portal do desktop via D-Bus ou GTK 3 como
 alternativa. Os nomes dos pacotes variam por distribuição. A versão Avalonia
-11.3.23 utiliza X11; em sessões Wayland depende de XWayland.
+12.1.6 está configurada neste projeto para usar X11; em sessões Wayland depende de XWayland.
 
 O idioma fica em $XDG_CONFIG_HOME/CertBox/settings.json ou, quando essa variável
 não define um caminho absoluto, ~/.config/CertBox/settings.json. A sugestão

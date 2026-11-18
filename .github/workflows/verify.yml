@@ -1,0 +1,59 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+# Developed with AI; third-party components retain their original licenses.
+name: Verify
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: verify-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Build and test (${{ matrix.platform }})
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            platform: windows
+            rid: win-x64
+          - os: ubuntu-24.04
+            platform: linux
+            rid: linux-x64
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    env:
+      DOTNET_CLI_TELEMETRY_OPTOUT: '1'
+      DOTNET_GENERATE_ASPNET_CERTIFICATE: 'false'
+      AVALONIA_TELEMETRY_OPTOUT: '1'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - name: Install SDK from global.json
+        uses: actions/setup-dotnet@26b0ec14cb23fa6904739307f278c14f94c95bf1 # v5
+        with:
+          global-json-file: global.json
+          dotnet-version: '10.0.x'
+      - name: Core tests
+        run: dotnet run --project tests/CertBox.Tests.csproj -c Release -- work/test-fixtures
+      - name: UI checks on Windows without showing a window
+        if: runner.os == 'Windows'
+        run: dotnet run --project tests/UiChecks/CertBox.UiChecks.csproj -c Release -r ${{ matrix.rid }} -p:CertBoxPlatform=${{ matrix.platform }} -- work/test-fixtures
+      - name: UI checks on Linux in a virtual display
+        if: runner.os == 'Linux'
+        run: xvfb-run -a dotnet run --project tests/UiChecks/CertBox.UiChecks.csproj -c Release -r ${{ matrix.rid }} -p:CertBoxPlatform=${{ matrix.platform }} -- work/test-fixtures
+      - name: Restore platform lockfile
+        run: dotnet restore src/CertBox/CertBox.csproj -r ${{ matrix.rid }} -p:CertBoxPlatform=${{ matrix.platform }} --locked-mode
+      - name: Publish trimmed GUI
+        run: dotnet publish src/CertBox/CertBox.csproj -c Release -r ${{ matrix.rid }} -p:CertBoxPlatform=${{ matrix.platform }} -p:RestoreLockedMode=true --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:EnableCompressionInSingleFile=true -p:DebugType=None -o work/verify/${{ matrix.rid }}

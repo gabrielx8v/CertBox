@@ -20,7 +20,7 @@ foreach ($path in @('README.md','docs/README.en.md','docs/README.es.md')) {
 [xml]$manifest = Get-Content -LiteralPath (Join-Path $repository 'src/CertBox/app.manifest') -Raw -Encoding UTF8
 $version = [string]$project.Project.PropertyGroup.Version
 $executable = Get-Item -LiteralPath (Join-Path $assets 'certbox-windows-x64.exe')
-if ($executable.VersionInfo.ProductVersion -ne $version -or $manifest.assembly.assemblyIdentity.version -ne ($version + '.0')) { throw 'Source, manifest and executable versions differ.' }
+if (($executable.VersionInfo.ProductVersion -split '\+', 2)[0] -ne $version -or $manifest.assembly.assemblyIdentity.version -ne ($version + '.0')) { throw 'Source, manifest and executable versions differ.' }
 $sum = Get-Content -LiteralPath (Join-Path $assets 'SHA256SUMS.txt') -Raw -Encoding UTF8
 $artifacts = @(Get-Content -LiteralPath (Join-Path $assets 'ARTIFACTS.json') -Raw -Encoding UTF8 | ConvertFrom-Json)
 if ($artifacts.Count -ne 2) { throw 'Expected Windows and Linux artifacts.' }

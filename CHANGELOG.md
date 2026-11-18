@@ -3,6 +3,17 @@
 Desenvolvido com IA: o código, a interface e o ícone foram produzidos com uso
 de IA. Bibliotecas externas mantêm sua autoria e suas licenças.
 
+## 2.3.1 — atualização de dependências
+
+- Avalonia 12.1.6 nas duas plataformas, com versão centralizada para manter
+  Win32, X11 e os pacotes compartilhados sincronizados nas propostas do Dependabot.
+- SDK de compilação .NET 11.0.100; aplicativo e runtime continuam em .NET 10.
+- Inicialização explícita do HarfBuzz e migração do placeholder de senha para
+  a API atual, preservando os três idiomas e o comportamento da interface.
+- Lockfiles, inventário de dependências e avisos de terceiros atualizados.
+- Verificação automatizada dos PRs com builds de Windows e Linux.
+- Linux continua sem teste manual, conforme o aviso nos três READMEs.
+
 ## 2.3.0 — versão preparada para a primeira publicação
 
 - Versões gráficas Windows x64 e Linux x64, com dependências e lockfiles separados.

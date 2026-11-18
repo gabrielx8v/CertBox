@@ -50,7 +50,7 @@ public sealed class MainWindow : Window
     private readonly GridSplitter divider = CreateDivider(false);
     private readonly Grid workspace = new() { ColumnDefinitions = new ColumnDefinitions("43*,12,57*") };
     private readonly TextBlock status = new() { IsVisible = false, FontSize = 12, TextWrapping = TextWrapping.Wrap, MaxHeight = 48, TextTrimming = TextTrimming.CharacterEllipsis };
-    private readonly TextBox password = new() { Watermark = "Senha da chave para gerar PEM", PasswordChar = '●', IsVisible = false };
+    private readonly TextBox password = new() { PlaceholderText = "Senha da chave para gerar PEM", PasswordChar = '●', IsVisible = false };
     private readonly Button select = new() { Content = "Selecionar", HorizontalAlignment = HorizontalAlignment.Center, Padding = new Thickness(20, 8) };
     private readonly Button clear = SmallButton("Limpar");
     private readonly Button addFiles = SmallButton("Adicionar arquivos");
@@ -190,7 +190,7 @@ public sealed class MainWindow : Window
         {
             if (control is TextBlock text) Bind(text.Text, value => text.Text = value);
             if (control is Button button && button.Content is string label) Bind(label, value => button.Content = value);
-            if (control is TextBox input) Bind(input.Watermark, value => input.Watermark = value);
+            if (control is TextBox input) Bind(input.PlaceholderText, value => input.PlaceholderText = value);
             if (ToolTip.GetTip(control) is string tip) Bind(tip, value => ToolTip.SetTip(control, value));
             Bind(AutomationProperties.GetName(control), value => AutomationProperties.SetName(control, value));
         }
