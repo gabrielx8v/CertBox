@@ -45,7 +45,8 @@ foreach ($folder in @('src','tests','scripts','tools','docs','licenses','.github
         }
     }
 }
-$artifacts = @(Get-Content -LiteralPath (Join-Path $sourceDirectory 'release/ARTIFACTS.json') -Raw -Encoding UTF8 | ConvertFrom-Json)
+# Assign directly: Windows PowerShell 5.1 emits the JSON array as one pipeline item.
+$artifacts = Get-Content -LiteralPath (Join-Path $sourceDirectory 'release/ARTIFACTS.json') -Raw -Encoding UTF8 | ConvertFrom-Json
 foreach ($artifact in $artifacts) { Copy-Item -LiteralPath (Join-Path $OutputDirectory $artifact.name) -Destination (Join-Path $assets $artifact.name) }
 foreach ($name in @('SHA256SUMS.txt','RELEASE_NOTES.md','ARTIFACTS.json')) { Copy-Item -LiteralPath (Join-Path $sourceDirectory ('release/' + $name)) -Destination (Join-Path $assets $name) }
 Write-Output "Current version only, prepared locally: $Destination"
